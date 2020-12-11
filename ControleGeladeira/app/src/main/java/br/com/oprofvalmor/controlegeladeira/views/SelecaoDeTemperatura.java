@@ -1,4 +1,4 @@
-package br.com.oprofvalmor.controlegeladeira;
+package br.com.oprofvalmor.controlegeladeira.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import br.com.oprofvalmor.controlegeladeira.R;
+import br.com.oprofvalmor.controlegeladeira.model.Geladeira;
 
 public class SelecaoDeTemperatura extends AppCompatActivity {
 
@@ -34,6 +37,8 @@ public class SelecaoDeTemperatura extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 int p = seekBar.getProgress();
                 txtTemperature.setText(OpcoesDeTemperatura.getNome(p));
+                //Alterando a temperatura da geladeira.
+                Geladeira.getInstance().selecionarTemperatura(p);
             }
 
             @Override

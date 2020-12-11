@@ -1,4 +1,4 @@
-package br.com.oprofvalmor.controlegeladeira;
+package br.com.oprofvalmor.controlegeladeira.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import br.com.oprofvalmor.controlegeladeira.R;
+import br.com.oprofvalmor.controlegeladeira.model.Geladeira;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
+        Geladeira geladeira = Geladeira.getInstance();
+        Geladeira geladeira1 = Geladeira.getInstance();
         ///
         //Acessar um objeto da tela.
         Button btOkay = findViewById(R.id.btOkay);

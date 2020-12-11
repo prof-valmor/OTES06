@@ -1,4 +1,4 @@
-package br.com.oprofvalmor.controlegeladeira;
+package br.com.oprofvalmor.controlegeladeira.views;
 
 public enum OpcoesDeTemperatura {
     MINIMA("Mínima"), MEDIA("Média"), MAXIMA("Máxima");

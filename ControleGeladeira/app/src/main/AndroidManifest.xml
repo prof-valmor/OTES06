@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ControleGeladeira">
 
-        <activity android:name=".MonitoramentoActivity"/>
-        <activity android:name=".SelecaoDeTemperatura" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".views.MonitoramentoActivity"/>
+        <activity android:name=".views.SelecaoDeTemperatura" />
+        <activity android:name=".views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
