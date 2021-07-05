@@ -1,2 +1,2 @@
-# otes06-2020-02
-Material gerado em 2020.02 para OTES06.
+# otes06
+Material gerado para a disciplina de OTES06.
