@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">wassup</string>
+    <string name="dialogo_de_alerta">Voce deseja ficar nesta tela?</string>
 </resources>
