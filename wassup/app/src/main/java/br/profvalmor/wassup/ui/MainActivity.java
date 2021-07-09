@@ -1,4 +1,4 @@
-package br.profvalmor.wassup;
+package br.profvalmor.wassup.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+
+import br.profvalmor.wassup.R;
 
 public class MainActivity extends AppCompatActivity implements NavegarInterface {
 

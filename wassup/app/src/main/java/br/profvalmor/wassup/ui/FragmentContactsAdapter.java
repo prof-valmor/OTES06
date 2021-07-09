@@ -1,4 +1,4 @@
-package br.profvalmor.wassup;
+package br.profvalmor.wassup.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.profvalmor.wassup.R;
 
 public class FragmentContactsAdapter extends BaseAdapter {
 
