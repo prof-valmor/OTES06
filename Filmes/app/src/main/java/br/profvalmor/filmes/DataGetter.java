@@ -69,7 +69,7 @@ public class DataGetter {
             public void onResponse(Bitmap response) {
                 callPosterListeners(response);
             }
-        }, 1500, 1500,
+        }, 0, 0,
                 ImageView.ScaleType.CENTER_CROP,
                 Bitmap.Config.ARGB_8888,
                 new Response.ErrorListener() {
