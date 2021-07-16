@@ -13,5 +13,5 @@ public class Contact {
     public Contact(String name) {
         this.name = name;
     }
-
+    public String getName() {return name;}
 }

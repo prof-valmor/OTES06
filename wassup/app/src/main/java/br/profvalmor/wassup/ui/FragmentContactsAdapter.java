@@ -10,30 +10,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.profvalmor.wassup.R;
+import br.profvalmor.wassup.db.Contact;
+import br.profvalmor.wassup.db.Database;
 
 public class FragmentContactsAdapter extends BaseAdapter {
 
-    private final List<String> mValues;
+    private List<Contact> mValues;
     private LayoutInflater inflater;
 
     public FragmentContactsAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
-
-        ArrayList<String> lista = new ArrayList<>(1);
-        for (int i = 0; i < 100; i++) {
-            lista.add(List.class.getName() + "# " + i);
-        }
-        mValues = lista;
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                mValues = Database.getInstance().getDB().contactDao().getAll();
+            }
+        };
+        (new Thread(r)).start();
     }
 
     @Override
     public int getCount() {
-        return mValues.size();
+        if(mValues != null)
+            return mValues.size();
+        return 0;
     }
 
     @Override
     public String getItem(int position) {
-        return mValues.get(position);
+        return mValues.get(position).getName();
     }
 
     @Override
