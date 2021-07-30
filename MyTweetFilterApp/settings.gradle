@@ -1,0 +1,2 @@
+rootProject.name = "My Tweet Filter App"
+include ':app'
