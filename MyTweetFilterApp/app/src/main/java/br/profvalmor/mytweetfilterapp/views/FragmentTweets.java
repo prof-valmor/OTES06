@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import br.profvalmor.mytweetfilterapp.R;
@@ -33,6 +34,14 @@ public class FragmentTweets extends Fragment {
 
         ListView list = view.findViewById(R.id.listTweets);
         list.setAdapter(new FragmentTweetsAdapter(getLayoutInflater()));
+        //
+        Button btVoltar = view.findViewById(R.id.btVoltar);
+        btVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).navegar(FragmentFilter.class.getSimpleName());
+            }
+        });
 
         return view;
     }
