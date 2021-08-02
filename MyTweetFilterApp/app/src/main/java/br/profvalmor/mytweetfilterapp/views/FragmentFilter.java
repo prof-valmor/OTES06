@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.profvalmor.mytweetfilterapp.R;
+import br.profvalmor.mytweetfilterapp.model.Authenticator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +39,9 @@ public class FragmentFilter extends Fragment {
         btReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).navegar(FragmentTweets.class.getSimpleName());
+//                ((MainActivity)getActivity()).navegar(FragmentTweets.class.getSimpleName());
+                Authenticator aut = new Authenticator();
+                aut.requestAccess();
             }
         });
     }
