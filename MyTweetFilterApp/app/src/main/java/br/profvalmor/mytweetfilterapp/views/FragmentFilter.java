@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import br.profvalmor.mytweetfilterapp.R;
 import br.profvalmor.mytweetfilterapp.model.Authenticator;
+import br.profvalmor.mytweetfilterapp.model.connection.RequestManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +36,7 @@ public class FragmentFilter extends Fragment {
     @Override
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        RequestManager.getInstance().initialize(getContext());
         Button btReport = view.findViewById(R.id.btReport);
         btReport.setOnClickListener(new View.OnClickListener() {
             @Override
