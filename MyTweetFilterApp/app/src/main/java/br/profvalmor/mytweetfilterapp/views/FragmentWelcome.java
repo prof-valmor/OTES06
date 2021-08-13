@@ -26,18 +26,7 @@ public class FragmentWelcome extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                ((MainActivity)getActivity()).navegar(FragmentFilter.class.getSimpleName());
-                this.cancel();
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 5000);
-
+        super.onCreate(savedInstanceState);//
     }
 
     @Override

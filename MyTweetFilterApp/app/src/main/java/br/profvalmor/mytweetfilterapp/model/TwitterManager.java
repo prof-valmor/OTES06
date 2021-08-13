@@ -44,9 +44,15 @@ public class TwitterManager implements AuthenticatorListener {
                 break;
         }
         if(prevState != state) {
-            this.listener.onStateChange(this.state);
+            if(this.listener != null)
+                this.listener.onStateChange(this.state);
+
             prevState = this.state;
         }
+    }
+
+    public Authenticator getAuthenticator() {
+        return authenticator;
     }
 
     public void setListener(TwitterManagerListener l) {

@@ -17,7 +17,6 @@ import br.profvalmor.mytweetfilterapp.model.connection.RequestManager;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentFilter#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class FragmentFilter extends Fragment {
@@ -36,14 +35,13 @@ public class FragmentFilter extends Fragment {
     @Override
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RequestManager.getInstance().initialize(getContext());
+
         Button btReport = view.findViewById(R.id.btReport);
         btReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                ((MainActivity)getActivity()).navegar(FragmentTweets.class.getSimpleName());
-                Authenticator aut = new Authenticator();
-                aut.requestAccess();
+                MainActivity.twitterManager.getAuthenticator().requestTweets();
             }
         });
     }

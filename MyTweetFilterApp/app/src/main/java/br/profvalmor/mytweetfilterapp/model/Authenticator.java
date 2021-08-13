@@ -97,6 +97,50 @@ public class Authenticator {
 
     }
 
+    public void requestTweets() {
+
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("grant_type", "client_credentials");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest sr = new JsonObjectRequest(Request.Method.GET, "https://api.twitter.com/2/tweets/1275828087666679809?tweet.fields=attachments,author_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,referenced_tweets,source,text,withheld",
+                obj,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("AUTHENTICATOR", "onResponse: " + response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("AUTHENTICATOR_ERR", "onErrorResponse: " + error);
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                String encoded = encode();
+                //Populating the header of that request.
+                map.put("User-Agent", "My Tweet Filter App v0.1");
+                map.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                map.put("Authorization", "Bearer " + accessToken);
+                map.put("Content-Length", String.valueOf(getBody().length));
+                return map;
+            }
+            @Override
+            public byte[] getBody() {
+                return ("grant_type=client_credentials").getBytes();
+            }
+        };
+
+        RequestManager.getInstance().addRequest(sr);
+
+    }
+
+
     public String getAccessToken() {
         return accessToken;
     }
