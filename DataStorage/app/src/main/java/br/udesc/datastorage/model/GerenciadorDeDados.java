@@ -1,7 +1,10 @@
 package br.udesc.datastorage.model;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Environment;
+
+import androidx.room.Room;
 
 import java.io.BufferedOutputStream;
 import java.io.DataOutputStream;
@@ -13,15 +16,37 @@ import java.lang.reflect.GenericArrayType;
 
 public class GerenciadorDeDados {
     private static GerenciadorDeDados instance;
+    private TheDatabase theDatabase;
     //Singleton.
     private GerenciadorDeDados() {
-
     }
     public static GerenciadorDeDados getInstance() {
         if(instance == null) {
             instance = new GerenciadorDeDados();
         }
         return instance;
+    }
+
+    public void initDatabase(Context context) {
+        if(theDatabase == null) {
+            theDatabase = Room.databaseBuilder(context, TheDatabase.class, "nome-do-banco-de-dad0s").build();
+        }
+    }
+
+    public TheDatabase getDatabase() {
+        return theDatabase;
+    }
+
+    public void armazenarPreferencia(Context context, String chave, String dado) {
+        SharedPreferences shared = context.getSharedPreferences("preferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = shared.edit();
+        edit.putString(chave, dado);
+        edit.commit();
+    }
+
+    public String lerPreferencia(Context context, String chave) {
+        SharedPreferences shared = context.getSharedPreferences("preferencias", Context.MODE_PRIVATE);
+        return shared.getString(chave, "nao Achou");
     }
 
     public void armazenarPessoaEmArquivo(Context applicationContext, Pessoa p) throws FileNotFoundException {
