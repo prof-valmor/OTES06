@@ -6,23 +6,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import br.udesc.appbase.model.Database;
+
 public class MovieListAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
-    //teste
-    String [] listaFilmes = new String[]{"The Matrix", "Avengers", "Red Alert"};
 
     public MovieListAdapter(LayoutInflater inflater){
         this.inflater = inflater;
     }
     @Override
     public int getCount() {
-        return listaFilmes.length;
+        return Database.getInstance().getMovies().size();
     }
 
     @Override
     public String getItem(int i) {
-        return listaFilmes[i];
+        return Database.getInstance().getMovies().get(i);
     }
 
     @Override
@@ -31,11 +31,11 @@ public class MovieListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int indice, View view, ViewGroup container) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.layout_movie, container, false);
+    public View getView(int indice, View linha, ViewGroup container) {
+        if (linha == null) {
+            linha = inflater.inflate(R.layout.layout_movie, container, false);
         }
-        ((TextView) view.findViewById(R.id.name)).setText(getItem(indice));
-        return view;
+        ((TextView) linha.findViewById(R.id.name)).setText(getItem(indice));
+        return linha;
     }
 }

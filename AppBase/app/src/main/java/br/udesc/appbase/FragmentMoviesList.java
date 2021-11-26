@@ -1,14 +1,15 @@
 package br.udesc.appbase;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import br.udesc.appbase.model.Database;
 
 public class FragmentMoviesList extends Fragment {
     public FragmentMoviesList() {
@@ -20,5 +21,13 @@ public class FragmentMoviesList extends Fragment {
         super.onStart();
         ListView listView = getView().findViewById(R.id.listMovies);
         listView.setAdapter(new MovieListAdapter(getLayoutInflater()));
+        //
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View linha, int i, long l) {
+                ((MainActivity)getActivity()).navigateTo(FragmentMovie.class.getSimpleName());
+                Database.getInstance().setSelected(linha.toString());
+            }
+        });
     }
 }
