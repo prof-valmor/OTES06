@@ -6,7 +6,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 import br.udesc.appbase.model.Database;
+import br.udesc.appbase.model.Movie;
 
 public class MovieListAdapter extends BaseAdapter {
 
@@ -17,11 +20,14 @@ public class MovieListAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return Database.getInstance().getMovies().size();
+        List<Movie> lista = Database.getInstance().getMovies();
+
+        if(lista == null) return 0;
+        return lista.size();
     }
 
     @Override
-    public String getItem(int i) {
+    public Movie getItem(int i) {
         return Database.getInstance().getMovies().get(i);
     }
 
@@ -35,7 +41,13 @@ public class MovieListAdapter extends BaseAdapter {
         if (linha == null) {
             linha = inflater.inflate(R.layout.layout_movie, container, false);
         }
-        ((TextView) linha.findViewById(R.id.name)).setText(getItem(indice));
+
+        ((TextView) linha.findViewById(R.id.movieTitle)).setText(getItem(indice).title);
         return linha;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 }

@@ -22,7 +22,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigateTo("FragmentMoviesList");
-        testRequest();
     }
 
     private void testRequest() {
@@ -41,7 +40,6 @@ public class MainActivity extends FragmentActivity {
                 Log.d(TAG, "onErrorResponse: " + error.toString());
             }
         };
-        cm.requestMovieData("Spiderman", l, el);
     }
 
     public void navigateTo(String className) {
