@@ -6,8 +6,12 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="40dp"
         android:text="ACTIVITY 2"
         android:id="@+id/txtTitulo2"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listaMensagems" />
 </LinearLayout>

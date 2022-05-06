@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.1489201406328478" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.49706621961441744" />
+        <entry key="app/src/main/res/layout/activity_msg.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/layout_linha.xml" value="0.43373493975903615" />
+        <entry key="app/src/main/res/layout/layout_msg_enviada.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/layout/layout_msg_recebida.xml" value="0.21302083333333333" />
       </map>
     </option>
   </component>
