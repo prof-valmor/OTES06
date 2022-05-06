@@ -53,7 +53,6 @@ public class MsgActivity extends Activity {
                 else {
                     view = carregaRecebidas(i, view, viewGroup);
                 }
-
                 return view;
             }
         });
