@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import com.example.pokeapi.R;
+import com.example.pokeapi.model.Parser;
 import com.example.pokeapi.model.PokeApiReader;
 
 import java.util.Observable;
@@ -27,6 +28,7 @@ public class FragmentSearch extends Fragment {
             public void onChanged(String s) {
                 TextView text = getActivity().findViewById(R.id.temporario);
                 text.setText(s.substring(0, 150));
+//                Parser.getInstance().processJson("");
             }
         });
         Button btSearch = getActivity().findViewById(R.id.btSearch);
