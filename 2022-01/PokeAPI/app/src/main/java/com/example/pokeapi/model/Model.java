@@ -10,6 +10,9 @@ public class Model {
 
     }
     public void init() {
+
         PokeApiReader.data.observeForever(Parser.getInstance());
+        // codigo para teste.
+        PokeApiReader.requestData("pikachu");
     }
 }

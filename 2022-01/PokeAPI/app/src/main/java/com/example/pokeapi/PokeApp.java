@@ -13,5 +13,6 @@ public class PokeApp extends Application {
         VolleyQueueManager.init(getApplicationContext());
 
         Model.getInstance().init();
+
     }
 }
