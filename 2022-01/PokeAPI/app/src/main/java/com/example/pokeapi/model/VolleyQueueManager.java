@@ -6,7 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-public class VolleyQueueManager {
+class VolleyQueueManager {
     private static Context context;
     private static RequestQueue queue;
     public static void init(Context applicationContext) {

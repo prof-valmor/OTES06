@@ -6,7 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
-public class PokeApiReader {
+class PokeApiReader {
     public static MutableLiveData<String> data = new MutableLiveData<>();
 
     public static void requestData(String pokemonName) {

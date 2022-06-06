@@ -7,13 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
 import com.example.pokeapi.R;
-import com.example.pokeapi.model.Parser;
-import com.example.pokeapi.model.PokeApiReader;
+import com.example.pokeapi.model.Model;
 
-import java.util.Observable;
 
 public class FragmentSearch extends Fragment {
     public FragmentSearch() {
@@ -23,19 +19,12 @@ public class FragmentSearch extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        PokeApiReader.data.observeForever(new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                TextView text = getActivity().findViewById(R.id.temporario);
-                text.setText(s.substring(0, 150));
-//                Parser.getInstance().processJson("");
-            }
-        });
+
         Button btSearch = getActivity().findViewById(R.id.btSearch);
         btSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PokeApiReader.requestData("pikachu");
+                Model.getInstance().searchPokemon("pikachu");
             }
         });
     }
