@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
+        <entry key="app/src/main/res/layout/fragment_pokemon.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/search_fragment.xml" value="0.1489201406328478" />
       </map>

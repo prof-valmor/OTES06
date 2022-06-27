@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Locale;
+
 @Entity
 public class Pokemon {
     @PrimaryKey
@@ -14,7 +16,7 @@ public class Pokemon {
     private String imagePath;
 
     public Pokemon(@NonNull String name, double weight, double height, String imagePath) {
-        this.name = name;
+        this.name = name.toLowerCase(Locale.ROOT);
         this.weight = weight;
         this.height = height;
         this.imagePath = imagePath;
