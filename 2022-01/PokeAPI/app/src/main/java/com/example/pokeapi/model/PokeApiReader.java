@@ -30,7 +30,7 @@ class PokeApiReader {
     }
     public static void requestImage(int pokemonId) {
         String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/" +
-                "sprites/pokemon/other/official-artwork/" + pokemonId;
+                "sprites/pokemon/other/official-artwork/" + pokemonId +".png";
 //        String url,
 //        Response.Listener<Bitmap> listener,
 //        int maxWidth,
