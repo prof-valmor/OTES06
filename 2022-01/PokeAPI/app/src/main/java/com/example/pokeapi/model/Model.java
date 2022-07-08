@@ -2,6 +2,7 @@ package com.example.pokeapi.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.media.ImageReader;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class Model implements Observer<String> {
     private DataBase dataBase;
     private Context context;
     private ModelListener listener;
+    PokemonPOJO pj =new PokemonPOJO();
 
     public static Model getInstance() {
         if(instance == null) instance = new Model();
@@ -34,6 +36,13 @@ public class Model implements Observer<String> {
         this.context = context;
         VolleyQueueManager.init(context);
         PokeApiReader.data.observeForever(this);
+        PokeApiReader.image.observeForever(new Observer<Bitmap>() {
+            @Override
+            public void onChanged(Bitmap bitmap) {
+                updatePojo(bitmap);
+                broadcastData();
+            }
+        });
         dataBase = Room.databaseBuilder(context,
                 DataBase.class, "pokemon-database").build();
     }
@@ -52,8 +61,11 @@ public class Model implements Observer<String> {
         Pokemon pokemon = dataBase.getPokemonDao().get(name);
         if(pokemon == null)
             PokeApiReader.requestData(name);
-        else
-            broadcastData(pokemon);
+        else {
+            updatePojo(pokemon);
+            broadcastData();
+        }
+
     }
 
     public void setListener(ModelListener listener) {
@@ -67,24 +79,23 @@ public class Model implements Observer<String> {
             public void run() {
                 Pokemon pokemon = PokemonFactory.create(s);
                 dataBase.getPokemonDao().add(pokemon);
-                broadcastData(pokemon);
+                PokeApiReader.requestImage(pokemon.getId());
+                updatePojo(pokemon);
             }
         };
         (new Thread(r)).start();
     }
 
-    private void broadcastData(Pokemon pokemon) {
-        PokemonPOJO pj =new PokemonPOJO();
+    private void updatePojo(Pokemon pokemon) {
         pj.name = pokemon.getName();
         pj.height = (int)pokemon.getHeight();
         pj.weight = (int)pokemon.getWeight();
-        //
-//        URLConnection connection = (new URL("posterUrl")).openConnection();
-//        Image resposta = ImageIO.read(connection.getInputStream());
+    }
+    private void updatePojo(Bitmap img) {
+        pj.image = img;
+    }
 
-        pj.image  = null;
-
-
+    private void broadcastData() {
         if(listener!=null)
             listener.onPokemonFound(pj);
     }

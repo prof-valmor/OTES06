@@ -28,8 +28,9 @@ class PokeApiReader {
         );
         VolleyQueueManager.addToQueue(request);
     }
-    public static void requestImage(String imageId) {
-        String url = "https:"+imageId;
+    public static void requestImage(int pokemonId) {
+        String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/" +
+                "sprites/pokemon/other/official-artwork/" + pokemonId;
 //        String url,
 //        Response.Listener<Bitmap> listener,
 //        int maxWidth,

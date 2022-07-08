@@ -11,7 +11,8 @@ class PokemonFactory {
         String name = js.get("name").getAsString();
         double w    = js.get("weight").getAsDouble();
         double h    = js.get("height").getAsDouble();
+        int id      = js.get("id").getAsInt();
         String path = "";
-        return new Pokemon(name, w, h, path);
+        return new Pokemon(name, w, h, id);
     }
 }

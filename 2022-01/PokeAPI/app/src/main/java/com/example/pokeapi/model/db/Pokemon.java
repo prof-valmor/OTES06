@@ -13,13 +13,13 @@ public class Pokemon {
     private String name;
     private double weight;
     private double height;
-    private String imagePath;
+    private int id;
 
-    public Pokemon(@NonNull String name, double weight, double height, String imagePath) {
+    public Pokemon(@NonNull String name, double weight, double height, int id) {
         this.name = name.toLowerCase(Locale.ROOT);
         this.weight = weight;
         this.height = height;
-        this.imagePath = imagePath;
+        this.id = id;
     }
 
     public double getHeight() {
@@ -30,8 +30,8 @@ public class Pokemon {
         return weight;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
