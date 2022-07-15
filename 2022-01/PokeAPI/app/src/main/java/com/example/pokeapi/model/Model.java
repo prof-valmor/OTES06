@@ -43,8 +43,8 @@ public class Model implements Observer<String> {
                 broadcastData();
             }
         });
-        dataBase = Room.databaseBuilder(context,
-                DataBase.class, "pokemon-database").build();
+//        dataBase = Room.databaseBuilder(context,
+//                DataBase.class, "pokemon-database").build();
     }
 
     public void searchPokemon(@NonNull String name) {
@@ -58,13 +58,14 @@ public class Model implements Observer<String> {
     }
 
     private void doSearch(String name) {
-        Pokemon pokemon = dataBase.getPokemonDao().get(name);
-        if(pokemon == null)
-            PokeApiReader.requestData(name);
-        else {
-            updatePojo(pokemon);
-            broadcastData();
-        }
+        PokeApiReader.requestData(name);
+//        Pokemon pokemon = dataBase.getPokemonDao().get(name);
+//        if(pokemon == null)
+//            PokeApiReader.requestData(name);
+//        else {
+//            updatePojo(pokemon);
+//            broadcastData();
+//        }
 
     }
 
@@ -78,7 +79,7 @@ public class Model implements Observer<String> {
             @Override
             public void run() {
                 Pokemon pokemon = PokemonFactory.create(s);
-                dataBase.getPokemonDao().add(pokemon);
+                //dataBase.getPokemonDao().add(pokemon);
                 PokeApiReader.requestImage(pokemon.getId());
                 updatePojo(pokemon);
             }

@@ -12,7 +12,7 @@ import com.example.pokeapi.R;
 import com.example.pokeapi.model.Model;
 
 
-public class FragmentSearch extends Fragment {
+public class FragmentSearch extends Fragment implements View.OnClickListener {
     public FragmentSearch() {
         super(R.layout.fragment_search);
     }
@@ -20,14 +20,21 @@ public class FragmentSearch extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        EditText edit = getActivity().findViewById(R.id.edtPokemonName);
 
         Button btSearch = getActivity().findViewById(R.id.btSearch);
-        btSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Model.getInstance().searchPokemon(edit.getText()+"");
-            }
-        });
+        btSearch.setOnClickListener(this);
+        Button btClear = getActivity().findViewById(R.id.btClear);
+        btClear.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        EditText edit = getActivity().findViewById(R.id.edtPokemonName);
+        if(view.getId() == R.id.btSearch) {
+            Model.getInstance().searchPokemon(edit.getText() + "");
+        }
+        else if(view.getId() == R.id.btClear) {
+            edit.setText("");
+        }
     }
 }

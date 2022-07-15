@@ -1,6 +1,7 @@
 package com.example.pokeapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,18 +15,32 @@ import com.example.pokeapi.view.FragmentPokemon;
 import com.example.pokeapi.view.FragmentSearch;
 
 public class MainActivity extends AppCompatActivity implements ModelListener {
-
+    private FragmentPokemon fragmentPokemon = new FragmentPokemon();
+    private FragmentSearch fragmentSearch = new FragmentSearch();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.frame, new FragmentSearch());
-        ft.commit();
+        navegarPara("search");
         //
         Model.getInstance().setListener(this);
+    }
+
+    private void navegarPara(String nomeDoFragmento) {
+        Fragment f = null;
+        if(nomeDoFragmento.equalsIgnoreCase("search")) {
+            f = fragmentSearch;
+        }
+        else if(nomeDoFragmento.equalsIgnoreCase("pokemon")) {
+            f = fragmentPokemon;
+        }
+        if(f != null) {
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.frame, f);
+            ft.commit();
+        }
     }
 
     @Override
@@ -33,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements ModelListener {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.frame, new FragmentPokemon(pokemon));
-                ft.commit();
+               fragmentPokemon.setPokemonPOJO(pokemon);
+               navegarPara("pokemon");
             }
         });
+    }
+
+    public void voltar() {
+        navegarPara("search");
     }
 }
