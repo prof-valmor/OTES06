@@ -2,7 +2,9 @@ package com.example.iiart.model;
 
 public class Curador {
     private static Curador instance;
+    private Arquivista arquivista;
     private Curador() {
+        arquivista = new Arquivista();
 
     }
     public static Curador getInstance(){
@@ -11,11 +13,10 @@ public class Curador {
     }
     //
     public void procurarObrasCom(String tema) {
-        Arquivista.procurarObrasComOTema(tema);
+        arquivista.procurarObrasComOTema(tema);
     }
 
     public void defineBuscador(IBuscador b) {
-        Arquivista.setBuscador(b);
-        ArtHandler.setBuscador(b);
+        arquivista.setBuscador(b);
     }
 }

@@ -1,14 +1,14 @@
 package com.example.iiart.model;
 
 class Arquivista {
-    private static IBuscador buscador;
-
-
-    public static void setBuscador(IBuscador b) {
+    private IBuscador buscador;
+    private ArtHandler artHandler = new ArtHandler();
+    public void setBuscador(IBuscador b) {
         buscador = b;
+        artHandler.setBuscador(b);
     }
 
-    public static void procurarObrasComOTema(String tema) {
+    public void procurarObrasComOTema(String tema) {
         buscador.buscarObraPorTema(tema);
     }
 }

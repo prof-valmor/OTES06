@@ -5,8 +5,8 @@ import android.util.Log;
 import androidx.databinding.Observable;
 
 public class ArtHandler {
-    private static IBuscador buscador;
-    public static void setBuscador(IBuscador b) {
+    private IBuscador buscador;
+    public void setBuscador(IBuscador b) {
         buscador = b;
         buscador.getResponse().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
