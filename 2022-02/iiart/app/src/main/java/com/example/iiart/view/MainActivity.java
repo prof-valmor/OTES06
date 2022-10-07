@@ -12,7 +12,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import com.example.iiart.R;
-import com.example.iiart.model.Curador;
+import com.example.iiart.model.Galeria;
 
 public class MainActivity extends AppCompatActivity {
     BroadcastReceiver receiver;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navegar(0);
-        //Curador.getInstance().procurarObrasCom("cats");
+        Galeria.getInstance().procurarObrasCom("cats");
 
         receiver = new BroadcastReceiver(){
 

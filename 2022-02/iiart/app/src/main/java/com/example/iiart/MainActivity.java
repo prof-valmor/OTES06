@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.iiart.model.Curador;
+import com.example.iiart.model.Galeria;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Curador.getInstance().procurarObrasCom("cats");
+        Galeria.getInstance().procurarObrasCom("cats");
     }
 }
