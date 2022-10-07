@@ -13,4 +13,9 @@ public class Curador {
     public void procurarObrasCom(String tema) {
         Arquivista.procurarObrasComOTema(tema);
     }
+
+    public void defineBuscador(IBuscador b) {
+        Arquivista.setBuscador(b);
+        ArtHandler.setBuscador(b);
+    }
 }

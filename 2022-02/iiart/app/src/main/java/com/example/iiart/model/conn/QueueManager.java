@@ -9,10 +9,10 @@ import com.android.volley.toolbox.Volley;
 public class QueueManager {
     private static RequestQueue queue;
 
-    public void init(Context c) {
+    public static void init(Context c) {
         queue = Volley.newRequestQueue(c);
     }
-    public void addToQueue(Request r) {
+    public static void addToQueue(Request r) {
         queue.add(r);
     }
 }
