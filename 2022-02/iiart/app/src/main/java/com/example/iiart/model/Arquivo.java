@@ -24,7 +24,7 @@ class Arquivo {
 
             @Override
             public void onItemRangeInserted(ObservableList sender, int positionStart, int itemCount) {
-
+                Log.d("ARQUIVO", "onChanged: ");
             }
 
             @Override
